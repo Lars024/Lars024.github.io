@@ -123,16 +123,16 @@
             }
             switch (true){
                 case output < 15:
-                    result.html("Je zelfwaardering is zeer laag");
+                    result.html(String(output) + "/30 Punten: Je zelfwaardering is zeer laag");
                     break;
                 case output < 18:
-                    result.html("Je zelfwaardering is laag");
+                    result.html(String(output) + "/30 Punten: Je zelfwaardering is laag");
                     break;
                 case output < 21:
-                    result.html("Je zelfwaardering is redelijk");
+                    result.html(String(output) + "/30 Punten: Je zelfwaardering is redelijk");
                     break;
                 default:
-                    result.html("Je zelfwaardering is hoog");
+                    result.html(String(output) + "/30 Punten: Je zelfwaardering is hoog");
             }
 
             event.preventDefault();
