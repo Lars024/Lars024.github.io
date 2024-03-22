@@ -1,0 +1,56 @@
+<html>
+<head>
+<script>
+
+//q=113
+//w=119
+//e=101
+//r=114
+//Hotkey 1 = floor(num / 3)
+//Hotkey 2 = num % 3
+var keys = [ 113, 119, 101]
+var skill = 0;
+var names = ["Devastating Fire (Fireball)", "Severing Bolt (Lightning Bolt)", "Molten Fissure", "Fleeting Current (Movement Speed Area)", "Pool of Reflection (Shield Area)", "Stirring lights (AA bonus)", "Grim visage (Fear)", "Gaze of the Abyss (Eye Area)", "Crushing Maw (Horizontal Pull)"]
+var gameActive = false;
+var nextKey = 1;
+var streak = 0;
+document.addEventListener("keypress", function(event) {
+	if( gameActive){
+		if( nextKey == 1 && event.keyCode == keys[Math.floor(skill / 3.0)] ){
+			//correct key 1
+			nextKey = 2;
+		} else if( nextKey == 2 && event.keyCode == keys[skill % 3] ){
+			//correct key 2
+			streak++;
+			document.getElementById("streak").innerHTML = streak;
+			pickSkill();
+		} else {
+			//Wrong key
+			document.getElementById("skillName").innerHTML = "Game Over";
+			document.getElementById("skillName").style.color = "red";
+			gameActive = false;
+		}
+}});
+
+function pickSkill(){
+	skill = Math.floor(Math.random() * 9);
+	document.getElementById("skillName").innerHTML = names[skill];
+	document.getElementById("skillName").style.color = "Black";
+	nextKey = 1;
+};
+
+function startGame(){
+	gameActive = true;
+	pickSkill();
+};
+
+</script>
+</head>
+<body>
+<div id="target">
+<p id='skillName'></p>
+<p>Streak: </p><p id='streak'>0</p>
+<button type="submit" onclick="startGame()">start</button>
+</div>
+</body>
+</html>
