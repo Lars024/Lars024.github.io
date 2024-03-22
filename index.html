@@ -40,6 +40,8 @@ function pickSkill(){
 };
 
 function startGame(){
+	streak = 0;
+	document.getElementById("streak").innerHTML = streak;
 	gameActive = true;
 	pickSkill();
 };
